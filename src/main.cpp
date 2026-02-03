@@ -7,5 +7,15 @@ void setup() {
 }
 
 void loop() {
-// write your code here
+    digitalWrite(trigPin, LOW);
+    delayMicroseconds(2);
+    digitalWrite(trigPin, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trigPin, LOW);
+    long duration = pulseIn(echoPin, HIGH);
+    long distance = duration * 0.034/2;
+    serial.print("Distance");
+    serial.print(distance);
+    serial.print(" cm");
+    delay(1000);
 }
