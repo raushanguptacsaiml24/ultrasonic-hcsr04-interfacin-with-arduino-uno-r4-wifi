@@ -2,6 +2,7 @@
 #define trigPin 9
 #define echoPin 10
 void setup() {
+    Serial.begin(9600);
     pinMode(trigPin, OUTPUT);
     pinMode(echoPin, INPUT);
 }
@@ -12,10 +13,10 @@ void loop() {
     digitalWrite(trigPin, HIGH);
     delayMicroseconds(10);
     digitalWrite(trigPin, LOW);
-    long duration = pulseIn(echoPin, HIGH);
-    long distance = duration * 0.034/2;
-    Serial.print("Distance");
+    unsigned long duration = pulseIn(echoPin, HIGH);
+    float distance = duration * 0.034f / 2.0f;
+    Serial.print("Distance: ");
     Serial.print(distance);
-    Serial.print(" cm");
+    Serial.println(" cm");
     delay(1000);
 }
